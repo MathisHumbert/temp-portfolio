@@ -8,7 +8,7 @@ export default class Home extends Page {
       element: '.home',
       elements: {
         wrapper: '.home__wrapper',
-        time: document.querySelector('.nav__time'),
+        time: '.home__nav__time',
       },
     });
   }
