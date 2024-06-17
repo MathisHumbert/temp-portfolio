@@ -200,11 +200,6 @@ export default class Page extends EventEmitter {
     return new Promise((res) => {
       const animateIn = new gsap.timeline();
 
-      animateIn.set(document.documentElement, {
-        backgroundColor: this.element.getAttribute('data-background'),
-        color: this.element.getAttribute('data-color'),
-      });
-
       res();
     });
   }

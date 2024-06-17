@@ -1,7 +1,17 @@
-.home(data-background="#1e1e1e" data-color="#dedede")
+.home
   .home__wrapper#wrapper
-    .home__top
-      h1=temp.home.title
-      a(href="/about") About
-    .home__bottom
-      .home__media
+    h1.home__title!=data.title.replace(/\n/g, '<br>')
+    .home__infos 
+      p.home__text=data.about
+      .home__works
+        h4.home__works__title Works
+        ul.home__works__list 
+          each item in data.works
+            li.home__work
+              a.home__work__link(href=item.link target='_blank')=item.name
+      .home__awards 
+        each item in data.awards
+          .home__award
+            h4.home__awards__title=item.title 
+            each awards in item.list
+              p.home__awards__text=awards

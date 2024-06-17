@@ -8,8 +8,8 @@
 html {
   @extend %cover;
 
-  font-size: calc(100vw / 1920 * 10);
-  font-family: $font-satoshi;
+  font-size: calc(100vw / 1440 * 10);
+  font-family: $font-graphik;
   position: fixed;
   overflow: hidden;
   overscroll-behavior: none;

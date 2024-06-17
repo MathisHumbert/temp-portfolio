@@ -8,10 +8,7 @@ html(lang="en")
 
   body
     include _includes/pages/home.pug
-    include _includes/pages/about.pug
 
   script.
-      window.ASSETS = !{JSON.stringify([])}
-  //-   window.ASSETS = !{JSON.stringify(prismic.assets).replace(/<\//g, "<\\/")}
 
   script(type="module", src="/src/app/index.js")

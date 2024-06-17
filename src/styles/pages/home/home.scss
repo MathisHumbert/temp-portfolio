@@ -8,37 +8,71 @@
 
 .home__wrapper {
   @extend %page__wrapper;
-}
 
-.home__top {
-  height: 75vh;
-  width: 100vw;
+  height: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  gap: 18px;
+  gap: 6.2rem;
+}
 
-  h1 {
-    font-size: 12rem;
-  }
+.home__title {
+  font-size: 8rem;
+  line-height: 7.8rem;
+  letter-spacing: calc(-8rem * 0.0244);
+  text-transform: uppercase;
+  font-weight: 600;
+  text-align: center;
 
-  a {
-    color: plum;
-    font-size: 3rem;
+  @include media('<phone') {
+    font-size: 7rem;
+    line-height: 6.8rem;
+    letter-spacing: calc(-7rem * 0.0244);
   }
 }
 
-.home__bottom {
-  height: 75vh;
-  width: 100vw;
+.home__infos {
+  width: 100%;
   display: flex;
-  align-items: center;
-  justify-content: center;
-  padding-bottom: 20rem;
+  justify-content: space-between;
+  padding: 0 21rem;
 
-  .home__media {
-    width: 90rem;
-    height: 90rem;
+  @include media('<phone') {
+    padding: 0 4rem;
+  }
+}
+
+.home__text {
+  max-width: 33rem;
+}
+
+.home__works__title {
+  text-transform: uppercase;
+  margin-bottom: 0.8rem;
+}
+
+.home__work__link {
+  display: inline-block;
+  margin-bottom: 0.6rem;
+  text-decoration: underline;
+}
+
+.home__award {
+  margin-bottom: 0.8rem;
+}
+
+.home__text,
+.home__works__title,
+.home__work__link,
+.home__awards__title,
+.home__awards__text {
+  font-size: 2rem;
+  line-height: 2.4rem;
+  font-family: $font-pp-neue-montreal;
+
+  @include media('<phone') {
+    font-size: 2.4rem;
+    line-height: 3.2rem;
   }
 }

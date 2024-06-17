@@ -8,14 +8,10 @@ import NormalizeWheel from 'normalize-wheel';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/all';
 import Stats from 'stats.js';
-import * as THREE from 'three';
 
-import Canvas from './components/Canvas';
-import Preloader from './components/Preloader';
 import Grid from './components/Grid';
 
 import Home from './pages/Home';
-import About from './pages/About';
 
 import { each } from './utils/dom';
 
@@ -25,8 +21,6 @@ class App {
   constructor() {
     this.template = window.location.pathname;
     this.isLoading = false;
-    this.clock = new THREE.Clock();
-    this.odlElapsedTime = 0;
 
     if (import.meta.env.VITE_DEV_MODE) {
       this.createStats();
@@ -39,32 +33,19 @@ class App {
   }
 
   init() {
-    this.createCanvas();
-    this.createPreloader();
-
     this.createPages();
 
     this.addEventListeners();
     this.addLinkListeners();
-  }
 
-  createCanvas() {
-    this.canvas = new Canvas({ template: this.template });
-  }
-
-  createPreloader() {
-    this.preloader = new Preloader();
-
-    this.preloader.once('loaded', this.onPreloaded);
+    this.onPreloaded();
   }
 
   createPages() {
     this.home = new Home();
-    this.about = new About();
 
     this.pages = {
       '/': this.home,
-      '/about': this.about,
     };
 
     if (this.template !== '/' && this.template.endsWith('/')) {
@@ -123,8 +104,6 @@ class App {
 
     this.createScrollTrigger();
 
-    this.canvas.onPreloaded();
-
     this.page.show();
   }
 
@@ -146,8 +125,6 @@ class App {
 
     page.createPageLoader();
 
-    this.canvas.onChangeStart();
-
     await this.page.hide();
 
     ScrollTrigger.getAll().forEach((t) => t.kill());
@@ -161,8 +138,6 @@ class App {
 
     this.createScrollTrigger();
 
-    this.canvas.onChangeEnd(this.template);
-
     this.page.show();
 
     this.onResize();
@@ -174,39 +149,21 @@ class App {
     if (this.page && this.page.onResize) {
       this.page.onResize();
     }
-
-    window.requestAnimationFrame(() => {
-      if (this.canvas && this.canvas.onResize) {
-        this.canvas.onResize();
-      }
-    });
   }
 
   onTouchDown(event) {
-    if (this.canvas && this.canvas.onTouchDown) {
-      this.canvas.onTouchDown(event);
-    }
-
     if (this.page && this.page.onTouchDown) {
       this.page.onTouchDown(event);
     }
   }
 
   onTouchMove(event) {
-    if (this.canvas && this.canvas.onTouchMove) {
-      this.canvas.onTouchMove(event);
-    }
-
     if (this.page && this.page.onTouchMove) {
       this.page.onTouchMove(event);
     }
   }
 
   onTouchUp(event) {
-    if (this.canvas && this.canvas.onTouchUp) {
-      this.canvas.onTouchUp(event);
-    }
-
     if (this.page && this.page.onTouchUp) {
       this.page.onTouchUp(event);
     }
@@ -214,10 +171,6 @@ class App {
 
   onWheel(event) {
     const normalizedWheel = NormalizeWheel(event);
-
-    if (this.canvas && this.canvas.onWheel) {
-      this.canvas.onWheel(normalizedWheel);
-    }
 
     if (this.page && this.page.onWheel) {
       this.page.onWheel(normalizedWheel);
@@ -228,20 +181,12 @@ class App {
    * Loop.
    */
   update() {
-    const elapsedTime = this.clock.getElapsedTime();
-    const deltaTime = elapsedTime - this.odlElapsedTime;
-    this.odlElapsedTime = elapsedTime;
-
     if (this.stats) {
       this.stats.begin();
     }
 
     if (this.page) {
       this.page.update();
-    }
-
-    if (this.canvas && this.canvas.update) {
-      this.canvas.update(this.page.scroll.current, deltaTime);
     }
 
     if (this.stats) {
@@ -307,8 +252,9 @@ class App {
   }
 }
 
-const satoshiFont = new FontFaceObserver('Satoshi');
+const graphikFont = new FontFaceObserver('Graphik');
+const ppNeueMontrealFont = new FontFaceObserver('PP Neue Montreal');
 
-Promise.all([satoshiFont.load()])
+Promise.all([graphikFont.load(), ppNeueMontrealFont.load()])
   .then(() => new App())
   .catch(() => new App());
