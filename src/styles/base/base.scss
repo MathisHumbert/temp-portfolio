@@ -10,6 +10,8 @@ html {
 
   font-size: calc(100vw / 1440 * 10);
   font-family: $font-graphik;
+  background: $color-white;
+  color: $color-black;
   position: fixed;
   overflow: hidden;
   overscroll-behavior: none;
