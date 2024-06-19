@@ -20,12 +20,14 @@
         a.home__nav__link(href=`mailto:${data.nav.left.link}`)=data.nav.left.link
       p.home__nav__text!=data.nav.right.replace(/\n/g, '<br>')
   .home__wrapper#wrapper
-    h1.home__title(data-animation="text")
-      a.home__title__link(href="https://x.com/Mathis1Humbert" target="_blank") Mathis Humbert
-      br
-      span.home__title__line is a creative developer
-      br
-      span.home__title__line working freelance
+    h1.home__title
+      span
+        span
+          a.home__title__link(href="https://x.com/Mathis1Humbert" target="_blank") Mathis Humbert
+      span
+        span.home__title__line is a creative developer
+      span
+        span.home__title__line working freelance
     .home__infos(data-animation="appear" data-delay=0.5)
       p.home__text=data.about
       .home__works

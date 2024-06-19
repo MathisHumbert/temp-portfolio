@@ -83,6 +83,17 @@
   font-weight: 600;
   text-align: center;
 
+  span {
+    display: block;
+    overflow: hidden;
+
+    span {
+      display: inline-block;
+      vertical-align: top;
+      will-change: transform;
+    }
+  }
+
   @include media('<phone') {
     font-size: 7rem;
     line-height: 6.8rem;

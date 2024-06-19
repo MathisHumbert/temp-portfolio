@@ -11,7 +11,10 @@ module.exports = {
     { name: 'Level Office', link: 'https://level-office.fr/' },
   ],
   awards: [
-    { title: 'AWWWARDS', list: ['Site of the Day x2', 'Developer award x2'] },
+    {
+      title: 'AWWWARDS',
+      list: ['Site of the Day x2', 'Developer award x2', 'Portfolio Honors x1'],
+    },
     { title: 'CSSDA', list: ['Website of The Day x2'] },
     { title: 'FWA', list: ['FWA of The Day x2'] },
   ],
