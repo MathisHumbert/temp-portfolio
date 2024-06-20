@@ -3,7 +3,7 @@ module.exports = {
   is a creative developer
   working freelance`,
   about:
-    'Mathis Humbert is a 25yo french self-taught developer specialized in interaction, animation, and motion usually working with JavaScript, WebGL, HTML and CSS.',
+    'Mathis Humbert is a 25yo french self-taught developer specialized in interaction, animation, and motion usually working with web agencies, companies, startups and individuals all over the world.',
   works: [
     { name: 'Local Studio', link: 'https://localstudio.fr/' },
     { name: 'Evan Fasquelle', link: 'https://evanfasquelle.com/' },
