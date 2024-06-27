@@ -1,35 +1,35 @@
 @font-face {
-  font-family: $font-pp-neue-montreal;
-  src: url('../fonts/pp-neue-montreal-regular.woff2') format('woff2'),
-    url('../fonts/pp-neue-montreal-regular.woff') format('woff');
+  font-family: $font-geist;
+  src: url('../fonts/geist-medium.woff2') format('woff2'),
+    url('../fonts/geist-medium.woff') format('woff');
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: $font-geist;
+  src: url('../fonts/geist-medium.woff2') format('woff2'),
+    url('../fonts/geist-medium.woff') format('woff');
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: $font-geist;
+  src: url('../fonts/geist-regular.woff2') format('woff2'),
+    url('../fonts/geist-regular.woff') format('woff');
   font-weight: normal;
   font-style: normal;
   font-display: swap;
 }
 
 @font-face {
-  font-family: $font-graphik;
-  src: url('../fonts/graphik-light.woff2') format('woff2'),
-    url('../fonts/graphik-light.woff') format('woff');
-  font-weight: 300;
-  font-style: normal;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: $font-graphik;
-  src: url('../fonts/graphik-regular.woff2') format('woff2'),
-    url('../fonts/graphik-regular.woff') format('woff');
+  font-family: $font-geist;
+  src: url('../fonts/geist-regular.woff2') format('woff2'),
+    url('../fonts/geist-regular.woff') format('woff');
   font-weight: normal;
-  font-style: normal;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: $font-graphik;
-  src: url('../fonts/graphik-bold.woff2') format('woff2'),
-    url('../fonts/graphik-bold.woff') format('woff');
-  font-weight: bold;
   font-style: normal;
   font-display: swap;
 }

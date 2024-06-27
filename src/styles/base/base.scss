@@ -9,9 +9,9 @@ html {
   @extend %cover;
 
   font-size: calc(100vw / 1440 * 10);
-  font-family: $font-graphik;
-  background: $color-white;
-  color: $color-black;
+  font-family: $font-geist;
+  background: $color-bunker;
+  color: $color-sulu;
   position: fixed;
   overflow: hidden;
   overscroll-behavior: none;
@@ -19,7 +19,7 @@ html {
   -webkit-font-smoothing: antialiased;
 
   @include media('<phone') {
-    font-size: calc(100vw / 1000 * 10);
+    font-size: calc(100vw / 393 * 10);
   }
 }
 

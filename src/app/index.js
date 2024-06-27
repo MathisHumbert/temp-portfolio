@@ -252,9 +252,8 @@ class App {
   }
 }
 
-const graphikFont = new FontFaceObserver('Graphik');
-const ppNeueMontrealFont = new FontFaceObserver('PP Neue Montreal');
+const geistFont = new FontFaceObserver('Geist');
 
-Promise.all([graphikFont.load(), ppNeueMontrealFont.load()])
+Promise.all([geistFont.load()])
   .then(() => new App())
   .catch(() => new App());
