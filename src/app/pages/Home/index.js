@@ -16,10 +16,14 @@ export default class Home extends Page {
    * Animations.
    */
   async show() {
+    this.element.classList.add(this.classes.active);
+
     return super.show();
   }
 
   async hide() {
+    this.element.classList.remove(this.classes.active);
+
     return super.hide();
   }
 
