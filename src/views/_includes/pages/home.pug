@@ -2,32 +2,46 @@
   .home__wrapper#wrapper
     h1.home__title 
       span.home__title__top 
-        span Creative
+        span.home__title__top__wrapper
+          span Creative
       span.home__title__middle
-        span Mathis Humbert
+        span.home__title__middle__wrapper
+          span Mathis Humbert
       span.home__title__bottom
-        span Developer
+        span.home__title__bottom__wrapper
+          span Developer
     .home__text
-      p Mathis Humbert is a 25yo french self-taught developer specialized in interaction, animation, and motion usually working with web agencies, companies, startups and individuals all over the world.
+      p(data-animation='text' data-delay=0.2) Mathis Humbert is a 25yo french self-taught developer specialized in interaction, animation, and motion usually working with web agencies, companies, startups and individuals all over the world.
       br
-      p He loves to create web sites that have unique and creative designs, to push his knowledge of developer and to deliver a pixel perfect result.
+      p(data-animation='text' data-delay=0.4) He loves to create web sites that have unique and creative designs, to push his knowledge of developer and to deliver a pixel perfect result.
     .home__infos 
       .home__infos__left 
         .home__infos__availability
           .home__infos__availability__wrapper
-            p.home__infos__availability__text Availability for Freelance work from :
-            p.home__infos__availability__date July 2024
+            p.home__infos__availability__text(data-animation='text' data-delay=0.4) Availability for Freelance work from :
+            p.home__infos__availability__date(data-animation='text' data-delay=0.5) July 2024
           .home__infos__availability__wrapper
-            p.home__infos__availability__text Currently looking for a creative developer job :
-            p.home__infos__availability__date September 2024
+            p.home__infos__availability__text(data-animation='text' data-delay=0.4) Currently looking for a creative developer job :
+            p.home__infos__availability__date(data-animation='text' data-delay=0.5) September 2024
         ul.home__infos__links 
           li.home__infos__link
-            a(href="mailto:mathishumbert71@gmail.com" target="_blank") Email
+            a(href="mailto:mathishumbert71@gmail.com" target="_blank" data-animation='title' data-delay=0.4 data-rotate='true') Email
           li.home__infos__link
-            a(href="https://x.com/Mathis1Humbert" target="_blank") Twitter
+            a(href="https://x.com/Mathis1Humbert" target="_blank" data-animation='title' data-delay=0.5 data-rotate='true') Twitter
           li.home__infos__link
-            a(href="https://www.linkedin.com/in/mathis-humbert-1612ba1b5/" target="_blank") LinkedIn
+            a(href="https://www.linkedin.com/in/mathis-humbert-1612ba1b5/" target="_blank" data-animation='title' data-delay=0.6 data-rotate='true') LinkedIn
           li.home__infos__link
-            a(href="https://github.com/MathisHumbert" target="_blank") Github
-      a.home__infos__right(href="https://evanfasquelle.com/" target="_blank")  
-        img.home__infos__image(src="/project.png", alt="evan-fasquelle")
+            a(href="https://github.com/MathisHumbert" target="_blank" data-animation='title' data-delay=0.7 data-rotate='true') Github
+      .home__infos__right
+        .home__infos__right__infinite 
+          .home__infos__right__infinite__wrapper
+            p.home__infos__right__infinite__text See it Live -&nbsp
+            p.home__infos__right__infinite__text See it Live -&nbsp
+            p.home__infos__right__infinite__text See it Live -&nbsp
+            p.home__infos__right__infinite__text See it Live -&nbsp
+            p.home__infos__right__infinite__text See it Live -&nbsp
+            p.home__infos__right__infinite__text See it Live -&nbsp
+        a.home__infos__right__project(href="https://evanfasquelle.com/" target="_blank" )  
+          img.home__infos__image(src="/images/evan-fasquelle.png", alt="evan-fasquelle")
+        a.home__infos__right__project(href="https://localstudio.fr/" target="_blank" )  
+          img.home__infos__image(src="/images/local-studio.png", alt="local-studio")

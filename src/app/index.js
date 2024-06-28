@@ -10,6 +10,7 @@ import { ScrollTrigger } from 'gsap/all';
 import Stats from 'stats.js';
 
 import Grid from './components/Grid';
+import Preloader from './components/Preloader';
 
 import Home from './pages/Home';
 
@@ -21,6 +22,7 @@ class App {
   constructor() {
     this.template = window.location.pathname;
     this.isLoading = false;
+    this.clock = { startTime: performance.now(), oldElapsedTime: 0 };
 
     if (import.meta.env.VITE_DEV_MODE) {
       this.createStats();
@@ -33,12 +35,18 @@ class App {
   }
 
   init() {
+    this.createPreloader();
+
     this.createPages();
 
     this.addEventListeners();
     this.addLinkListeners();
+  }
 
-    this.onPreloaded();
+  createPreloader() {
+    this.preloader = new Preloader();
+
+    this.preloader.once('loaded', this.onPreloaded);
   }
 
   createPages() {
@@ -179,14 +187,21 @@ class App {
 
   /**
    * Loop.
-   */
+   */ getElapsedTime() {
+    return performance.now() - this.clock.startTime;
+  }
+
   update() {
+    const elapsedTime = this.getElapsedTime();
+    const deltaTime = (elapsedTime - this.clock.oldElapsedTime) * 0.01;
+    this.clock.oldElapsedTime = elapsedTime;
+
     if (this.stats) {
       this.stats.begin();
     }
 
     if (this.page) {
-      this.page.update();
+      this.page.update(deltaTime);
     }
 
     if (this.stats) {
