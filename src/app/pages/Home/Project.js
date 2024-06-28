@@ -109,11 +109,11 @@ export default class Project extends Component {
       this.scroll.ease
     );
 
-    each(this.elements.infiniteTexts, (item, index) => {
+    each(this.elements.infiniteTexts, (item) => {
       const position = -this.scroll.current - item.extra;
       const offset = position + item.offset.left + item.offset.width;
 
-      item.isBefore = offset < 0;
+      item.isBefore = offset < -this.infiniteWidth * 0.1;
 
       if (item.isBefore) {
         item.extra -= this.infiniteWidth;
