@@ -114,7 +114,8 @@
 .home__infos {
   display: flex;
   justify-content: space-between;
-  padding: 4.5rem;
+  padding: 0 4.5rem;
+  transform: translateY(-2rem);
 
   @include media('<phone') {
     flex-direction: column;
