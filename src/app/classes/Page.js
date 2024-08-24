@@ -1,13 +1,12 @@
 import autoBind from 'auto-bind';
 import EventEmitter from 'events';
-import { each } from 'lodash';
 import Prefix from 'prefix';
 import gsap from 'gsap';
 
 import { Detection } from '../classes/Detection';
 import LazyLoad from '../classes/LazyLoad';
 import { clamp, lerp } from '../utils/math';
-import { map } from '../utils/dom';
+import { map, each } from '../utils/dom';
 
 import Appear from '../animations/Appear';
 import Text from '../animations/Text';

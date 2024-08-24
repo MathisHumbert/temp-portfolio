@@ -13,118 +13,71 @@ export default class Project extends Component {
       element: '.home__infos__right',
       elements: {
         projects: '.home__infos__right__project',
-        infinite: '.home__infos__right__infinite',
-        infiniteWrapper: '.home__infos__right__infinite__wrapper',
-        infiniteTexts: '.home__infos__right__infinite__text',
+        images: '.home__infos__image',
+        text: '.home__infos__text',
       },
     });
 
-    this.currentProject = Math.floor(Math.random() * 2);
+    this.currentProject = 1;
     this.isAnimating = false;
-    this.transformPrefix = Prefix('transform');
-    this.scroll = {
-      current: 0,
-      target: 0,
-      ease: 0.1,
-    };
 
-    gsap.set([this.elements.projects, this.elements.infinite], {
+    gsap.set([...this.elements.projects, this.elements.text], {
       autoAlpha: 0,
     });
-
-    this.animateInfinite = gsap.timeline({
-      paused: true,
-      defaults: { duration: 0.4, ease: easeOut },
-    });
-
-    this.animateInfinite.fromTo(
-      this.elements.infinite,
-      { autoAlpha: 0 },
-      { autoAlpha: 1 }
-    );
   }
 
   show() {
-    gsap.to(this.elements.projects[this.currentProject], {
-      autoAlpha: 1,
-      duration: 1,
-      ease: easeInOut,
-      delay: 0.6,
-    });
+    gsap.set(this.elements.projects[this.currentProject], { autoAlpha: 1 });
+    gsap.fromTo(
+      this.elements.projects[this.currentProject],
+      { clipPath: 'inset(100% 0%)' },
+      {
+        clipPath: 'inset(0% 0%)',
+        duration: 0.8,
+        ease: easeOut,
+        delay: 0.4,
+      }
+    );
   }
 
   /**
    * Events.
    */
-  onResize() {
-    this.infiniteWidth = this.elements.infiniteWrapper.clientWidth;
-
-    const { left } = getOffset(this.elements.infiniteWrapper);
-
-    each(this.elements.infiniteTexts, (item) => {
-      item.style[this.transformPrefix] = `translate3d(0, 0, 0)`;
-
-      const offset = getOffset(item);
-      item.offset = { ...offset, left: offset.left - left };
-      item.extra = 0;
-    });
-  }
-
   onMouseEnter() {
-    if (this.isAnimating) return;
+    const tl = gsap.timeline();
 
-    this.animateInfinite.play();
-  }
-
-  onMouseLeave(element) {
-    if (this.isAnimating) return;
-
-    this.isAnimating = true;
-    this.currentProject = this.currentProject === 0 ? 1 : 0;
-
-    this.animateInfinite.reverse();
-
-    const tl = gsap.timeline({
-      defaults: { duration: 0.4, ease: easeOut },
-      onComplete: () => (this.isAnimating = false),
-    });
-
-    tl.to(element, { autoAlpha: 0 }).to(
-      this.elements.projects[this.currentProject],
-      {
-        autoAlpha: 1,
-      }
+    tl.to(this.elements.images[this.currentProject], {
+      scale: 1.25,
+      rotate: '-8deg',
+      duration: 0.4,
+      ease: 'sine.out',
+    }).to(
+      this.elements.text[this.currentProject],
+      { autoAlpha: 1, duration: 0.4, ease: 'sine.out' },
+      0
     );
   }
 
-  /**
-   * Loop.
-   */
-  update(time) {
-    this.scroll.target += 6 * time;
+  onMouseLeave() {
+    const nextProject = this.currentProject === 0 ? 1 : 0;
 
-    this.scroll.current = lerp(
-      this.scroll.current,
-      this.scroll.target,
-      this.scroll.ease
-    );
+    const tl = gsap.timeline({ defaults: { duration: 0.4, ease: 'sine.out' } });
 
-    each(this.elements.infiniteTexts, (item) => {
-      const position = -this.scroll.current - item.extra;
-      const offset = position + item.offset.left + item.offset.width;
+    tl.to(this.elements.images[this.currentProject], {
+      scale: 1,
+      rotate: '0',
+    })
+      .to(
+        [
+          this.elements.projects[this.currentProject],
+          this.elements.text[this.currentProject],
+        ],
+        { autoAlpha: 0 },
+        0
+      )
+      .to(this.elements.projects[nextProject], { autoAlpha: 1 });
 
-      item.isBefore = offset < -this.infiniteWidth * 0.1;
-
-      if (item.isBefore) {
-        item.extra -= this.infiniteWidth;
-
-        item.isBefore = false;
-      }
-
-      item.style[this.transformPrefix] = `translate3d(${Math.round(
-        position
-      )}px, 0, 0)`;
-    });
+    this.currentProject = nextProject;
   }
 
   addEventListeners() {
@@ -133,7 +86,7 @@ export default class Project extends Component {
         passive: true,
       });
 
-      element.addEventListener('mouseleave', () => this.onMouseLeave(element), {
+      element.addEventListener('mouseleave', () => this.onMouseLeave(), {
         passive: true,
       });
     });

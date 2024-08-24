@@ -1,14 +1,46 @@
 import gsap from 'gsap';
+import SplitType from 'split-type';
 
 import Page from '../../classes/Page';
 import { Detection } from '../../classes/Detection';
 import Project from './Project';
 import { expoOut } from '../../utils/easing';
 import { each, map } from '../../utils/dom';
-import SplitType from 'split-type';
 
 export default class Home extends Page {
   constructor() {
+    const monthsInEnglish = [
+      'January',
+      'February',
+      'March',
+      'April',
+      'May',
+      'June',
+      'July',
+      'August',
+      'September',
+      'October',
+      'November',
+      'December',
+    ];
+    const currentDate = new Date();
+    const nextMonthDate = new Date(
+      currentDate.setMonth(currentDate.getMonth() + 1)
+    );
+    const nextMonthIndex = nextMonthDate.getMonth();
+
+    const datesEl = document.querySelectorAll(
+      '.home__infos__availability__date'
+    );
+
+    each(
+      datesEl,
+      (element) =>
+        (element.textContent = `${
+          monthsInEnglish[nextMonthIndex]
+        } ${nextMonthDate.getFullYear()}`)
+    );
+
     super({
       id: 'home',
       classes: { active: 'home--active' },
@@ -18,6 +50,7 @@ export default class Home extends Page {
         title: '.home__title span span span',
         projects: '.home__infos__right__project',
         links: '.home__infos__link a',
+        dates: '.home__infos__availability__date',
         linksChars: null,
       },
     });
@@ -71,24 +104,6 @@ export default class Home extends Page {
   /**
    * Events.
    */
-  onResize() {
-    super.onResize();
-
-    if (this.project && this.project.onResize) {
-      this.project.onResize();
-    }
-  }
-
-  /**
-   * Loop.
-   */
-  update(time) {
-    super.update();
-
-    if (this.project && this.project.update) {
-      this.project.update(time);
-    }
-  }
 
   addEventListeners() {
     each(this.elements.links, (element, index) => {

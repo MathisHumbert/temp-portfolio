@@ -185,38 +185,35 @@
   }
 }
 
-.home__infos__right__infinite {
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  display: flex;
-  align-items: center;
-  background: rgba($color-bunker, 0.4);
-  z-index: 2;
-  pointer-events: none;
-}
-
-.home__infos__right__infinite__wrapper {
-  display: flex;
-  flex-wrap: nowrap;
-}
-
-.home__infos__right__infinite__text {
-  @extend %text;
-
-  font-size: 2rem;
-  white-space: nowrap;
-  font-weight: 500;
-  color: $color-perfume;
-}
-
 .home__infos__right__project {
   @extend %cover;
+
+  border-radius: 0.4rem;
+  overflow: hidden;
 }
 
 .home__infos__image {
   @extend %cover;
 
   object-fit: cover;
-  border-radius: 0.4rem;
+}
+
+.home__infos__text {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  font-size: 4rem;
+  line-height: 80%;
+  letter-spacing: calc(-8rem * 0.05);
+  font-weight: 500;
+  white-space: nowrap;
+  background: rgba($color-bunker, 0.4);
+
+  p {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    color: $color-perfume;
+  }
 }
