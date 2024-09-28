@@ -60,7 +60,10 @@ export default class Home extends Page {
     super.create();
 
     if (!Detection.isMobile) {
-      this.project = new Project();
+      this.projects = map(
+        [...this.elements.projects].reverse(),
+        (element, index) => new Project(element, index)
+      );
     }
 
     this.elements.linksChars = map(
@@ -88,9 +91,11 @@ export default class Home extends Page {
       { yPercent: 0, rotate: 0, ease: expoOut, duration: 1.5, stagger: 0.1 }
     );
 
-    if (this.project && this.project.show) {
-      this.project.show();
-    }
+    each(this.projects, (project) => {
+      if (project && project.show) {
+        project.show();
+      }
+    });
 
     return super.show();
   }
@@ -118,9 +123,13 @@ export default class Home extends Page {
         { color: '#e3c6fa', stagger: { each: 0.05, from: 'random' } }
       );
 
-      element.addEventListener('mouseenter', () => tl.play());
+      element.addEventListener('mouseenter', () => tl.play(), {
+        passive: true,
+      });
 
-      element.addEventListener('mouseleave', () => tl.reverse());
+      element.addEventListener('mouseleave', () => tl.reverse(), {
+        passive: true,
+      });
     });
   }
 }

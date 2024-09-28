@@ -15,6 +15,10 @@
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+
+  @include media('<phone') {
+    max-height: 100vh;
+  }
 }
 
 .home__title {
@@ -28,7 +32,7 @@
   margin-top: -4rem;
 
   @include media('<phone') {
-    margin-top: 10rem;
+    margin-top: 6rem;
     font-size: 10rem;
     letter-spacing: calc(-10rem * 0.05);
   }
@@ -119,7 +123,7 @@
 
   @include media('<phone') {
     flex-direction: column;
-    padding: 0 2.5rem 2.5rem 2.5rem;
+    padding: 0 2.5rem 0;
   }
 }
 
@@ -133,13 +137,12 @@
   }
 }
 
-.home__infos__availability {
+.home__infos__left__top {
   display: flex;
-  justify-content: space-between;
   gap: 21.5rem;
 
   @include media('<phone') {
-    flex-direction: column;
+    flex-direction: column-reverse;
     gap: 2rem;
   }
 }
@@ -156,6 +159,25 @@
   color: $color-perfume;
 }
 
+.home__infos__awards {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.home__infos__awards__title {
+  @extend %text;
+
+  max-width: 21.4rem;
+}
+
+.home__infos__awards__text {
+  @extend %text;
+
+  color: $color-perfume;
+  white-space: nowrap;
+}
+
 .home__infos__links {
   display: flex;
   flex-direction: column;
@@ -170,15 +192,18 @@
 .home__infos__link {
   @extend %text;
 
+  transform: translateY(-2rem);
   overflow: hidden;
+
+  @include media('<phone') {
+    transform: translateY(0);
+  }
 }
 
 .home__infos__right {
   position: relative;
-  display: block;
-  width: 31.5rem;
-  height: 19.7rem;
-  overflow: hidden;
+  display: flex;
+  gap: 4.5rem;
 
   @include media('<phone') {
     display: none;
@@ -186,9 +211,10 @@
 }
 
 .home__infos__right__project {
-  @extend %cover;
-
+  position: relative;
   border-radius: 0.4rem;
+  width: 31.5rem;
+  height: 19.7rem;
   overflow: hidden;
 }
 
