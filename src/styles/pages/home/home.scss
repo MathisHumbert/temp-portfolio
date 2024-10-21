@@ -32,7 +32,7 @@
   margin-top: -4rem;
 
   @include media('<phone') {
-    margin-top: 6rem;
+    margin-top: 10rem;
     font-size: 10rem;
     letter-spacing: calc(-10rem * 0.05);
   }
@@ -163,6 +163,10 @@
   display: flex;
   flex-direction: column;
   gap: 2rem;
+
+  @include media('<phone') {
+    display: none;
+  }
 }
 
 .home__infos__awards__title {
