@@ -44,7 +44,7 @@
 
   .home__title__top__wrapper {
     display: inline-block;
-    transform: translateY(30%);
+    transform: translateY(32%);
     overflow: hidden;
 
     span {
@@ -122,7 +122,8 @@
   transform: translateY(-2rem);
 
   @include media('<phone') {
-    flex-direction: column;
+    flex-direction: column-reverse;
+    gap: 2rem;
     padding: 0 2.5rem 0;
   }
 }
@@ -140,10 +141,12 @@
 .home__infos__left__top {
   display: flex;
   gap: 21.5rem;
+  margin-bottom: 7.2rem;
 
   @include media('<phone') {
     flex-direction: column-reverse;
     gap: 2rem;
+    margin-bottom: 0;
   }
 }
 
@@ -161,8 +164,7 @@
 
 .home__infos__awards {
   display: flex;
-  flex-direction: column;
-  gap: 2rem;
+  gap: 4.5rem;
 
   @include media('<phone') {
     display: none;
@@ -184,8 +186,8 @@
 
 .home__infos__links {
   display: flex;
-  flex-direction: column;
-  gap: 0.3rem;
+  // flex-direction: column;
+  gap: 2rem;
 
   @include media('<phone') {
     flex-direction: row;
@@ -205,45 +207,16 @@
 }
 
 .home__infos__right {
-  position: relative;
   display: flex;
-  gap: 4.5rem;
-
-  @include media('<phone') {
-    display: none;
-  }
+  flex-direction: column;
 }
 
-.home__infos__right__project {
-  position: relative;
-  border-radius: 0.4rem;
-  width: 31.5rem;
-  height: 19.7rem;
-  overflow: hidden;
+.home__infos__right__title {
+  @extend %text;
 }
 
-.home__infos__image {
-  @extend %cover;
+.home__infos__right__link {
+  @extend %text;
 
-  object-fit: cover;
-}
-
-.home__infos__text {
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  font-size: 4rem;
-  line-height: 80%;
-  letter-spacing: calc(-8rem * 0.05);
-  font-weight: 500;
-  white-space: nowrap;
-  background: rgba($color-bunker, 0.4);
-
-  p {
-    position: absolute;
-    left: 50%;
-    top: 50%;
-    transform: translate(-50%, -50%);
-    color: $color-perfume;
-  }
+  color: $color-perfume;
 }

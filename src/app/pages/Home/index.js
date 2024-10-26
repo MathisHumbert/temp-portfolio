@@ -7,40 +7,31 @@ import Project from './Project';
 import { expoOut } from '../../utils/easing';
 import { each, map } from '../../utils/dom';
 
+const monthsInEnglish = [
+  'January',
+  'February',
+  'March',
+  'April',
+  'May',
+  'June',
+  'July',
+  'August',
+  'September',
+  'October',
+  'November',
+  'December',
+];
+const currentDate = new Date();
+const nextMonthDate = new Date(
+  currentDate.setMonth(currentDate.getMonth() + 1)
+);
+const nextMonthIndex = nextMonthDate.getMonth();
+document.querySelector('.home__infos__availability__date').textContent = `${
+  monthsInEnglish[nextMonthIndex]
+} ${nextMonthDate.getFullYear()}`;
+
 export default class Home extends Page {
   constructor() {
-    const monthsInEnglish = [
-      'January',
-      'February',
-      'March',
-      'April',
-      'May',
-      'June',
-      'July',
-      'August',
-      'September',
-      'October',
-      'November',
-      'December',
-    ];
-    const currentDate = new Date();
-    const nextMonthDate = new Date(
-      currentDate.setMonth(currentDate.getMonth() + 1)
-    );
-    const nextMonthIndex = nextMonthDate.getMonth();
-
-    const datesEl = document.querySelectorAll(
-      '.home__infos__availability__date'
-    );
-
-    each(
-      datesEl,
-      (element) =>
-        (element.textContent = `${
-          monthsInEnglish[nextMonthIndex]
-        } ${nextMonthDate.getFullYear()}`)
-    );
-
     super({
       id: 'home',
       classes: { active: 'home--active' },
@@ -48,23 +39,16 @@ export default class Home extends Page {
       elements: {
         wrapper: '.home__wrapper',
         title: '.home__title span span span',
-        projects: '.home__infos__right__project',
         links: '.home__infos__link a',
-        dates: '.home__infos__availability__date',
         linksChars: null,
+        projects: '.home__infos__right__link',
+        projectsChars: null,
       },
     });
   }
 
   create() {
     super.create();
-
-    if (!Detection.isMobile) {
-      this.projects = map(
-        [...this.elements.projects].reverse(),
-        (element, index) => new Project(element, index)
-      );
-    }
 
     this.elements.linksChars = map(
       this.elements.links,
@@ -75,6 +59,18 @@ export default class Home extends Page {
           charClass: '',
         }).chars
     );
+
+    this.elements.projectsChars = map(
+      this.elements.projects,
+      (element) =>
+        new SplitType(element, {
+          types: 'chars',
+          tagName: 'span',
+          charClass: '',
+        }).chars
+    );
+
+    console.log(this.elements.projectsChars);
   }
 
   /**
@@ -91,12 +87,6 @@ export default class Home extends Page {
       { yPercent: 0, rotate: 0, ease: expoOut, duration: 1.5, stagger: 0.1 }
     );
 
-    each(this.projects, (project) => {
-      if (project && project.show) {
-        project.show();
-      }
-    });
-
     return super.show();
   }
 
@@ -109,7 +99,6 @@ export default class Home extends Page {
   /**
    * Events.
    */
-
   addEventListeners() {
     each(this.elements.links, (element, index) => {
       const tl = gsap.timeline({
@@ -121,6 +110,29 @@ export default class Home extends Page {
         this.elements.linksChars[index],
         { color: '#cef571' },
         { color: '#e3c6fa', stagger: { each: 0.05, from: 'random' } }
+      );
+
+      element.addEventListener('mouseenter', () => tl.play(), {
+        passive: true,
+      });
+
+      element.addEventListener('mouseleave', () => tl.reverse(), {
+        passive: true,
+      });
+    });
+
+    each(this.elements.projects, (element, index) => {
+      const tl = gsap.timeline({
+        paused: true,
+        defaults: { ease: expoOut, duration: 0.2 },
+      });
+
+      console.log(element);
+
+      tl.fromTo(
+        this.elements.projectsChars[index],
+        { color: '#e3c6fa' },
+        { color: '#cef571', stagger: { each: 0.05, from: 'random' } }
       );
 
       element.addEventListener('mouseenter', () => tl.play(), {
