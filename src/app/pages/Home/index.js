@@ -3,7 +3,6 @@ import SplitType from 'split-type';
 
 import Page from '../../classes/Page';
 import { Detection } from '../../classes/Detection';
-import Project from './Project';
 import { expoOut } from '../../utils/easing';
 import { each, map } from '../../utils/dom';
 
@@ -69,8 +68,6 @@ export default class Home extends Page {
           charClass: '',
         }).chars
     );
-
-    console.log(this.elements.projectsChars);
   }
 
   /**
@@ -100,6 +97,8 @@ export default class Home extends Page {
    * Events.
    */
   addEventListeners() {
+    if (Detection.isMobile) return;
+
     each(this.elements.links, (element, index) => {
       const tl = gsap.timeline({
         paused: true,
@@ -126,8 +125,6 @@ export default class Home extends Page {
         paused: true,
         defaults: { ease: expoOut, duration: 0.2 },
       });
-
-      console.log(element);
 
       tl.fromTo(
         this.elements.projectsChars[index],
