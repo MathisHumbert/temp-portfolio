@@ -16,7 +16,7 @@
   flex-direction: column;
   justify-content: space-between;
 
-  @include media('<phone') {
+  @include media("<phone") {
     max-height: 100vh;
   }
 }
@@ -31,7 +31,7 @@
   font-weight: 500;
   margin-top: -4rem;
 
-  @include media('<phone') {
+  @include media("<phone") {
     margin-top: 10rem;
     font-size: 10rem;
     letter-spacing: calc(-10rem * 0.05);
@@ -54,13 +54,13 @@
     }
   }
 
-  @include media('<phone') {
+  @include media("<phone") {
     margin-left: 0;
   }
 }
 
 .home__title__middle {
-  margin-left: 2.25rem;
+  margin-left: 2.5rem;
   overflow: hidden;
 
   .home__title__middle__wrapper {
@@ -74,7 +74,7 @@
     }
   }
 
-  @include media('<phone') {
+  @include media("<phone") {
     margin-left: 0;
   }
 }
@@ -95,7 +95,7 @@
     }
   }
 
-  @include media('<phone') {
+  @include media("<phone") {
     margin-left: 0;
   }
 }
@@ -104,120 +104,71 @@
   @extend %text;
 
   position: absolute;
-  top: 4.2rem;
-  left: 4.5rem;
+  top: 4rem;
+  left: 0;
+  padding: 0 4rem;
   max-width: 45rem;
   mix-blend-mode: exclusion;
 
-  @include media('<phone') {
-    top: 2.25rem;
-    left: 2.25rem;
+  @include media("<phone") {
+    top: 2.5rem;
+    padding: 0 2.5rem;
   }
 }
 
 .home__infos {
   display: flex;
   justify-content: space-between;
-  padding: 0 4.5rem;
-  transform: translateY(-2rem);
+  padding: 0 4rem;
+  margin-bottom: 10rem;
 
-  @include media('<phone') {
-    flex-direction: column-reverse;
+  @include media("<phone") {
+    flex-direction: column;
     gap: 2rem;
-    padding: 0 2.5rem 0;
+    padding: 0 2.5rem;
   }
 }
 
-.home__infos__left {
+.home__infos__list {
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
 
-  @include media('<phone') {
-    gap: 2rem;
+  @include media("<phone") {
+    &:nth-of-type(3),
+    &:nth-of-type(4) {
+      display: none;
+    }
   }
 }
 
-.home__infos__left__top {
-  display: flex;
-  gap: 21.5rem;
-  margin-bottom: 7.2rem;
-
-  @include media('<phone') {
-    flex-direction: column-reverse;
-    gap: 2rem;
-    margin-bottom: 0;
-  }
-}
-
-.home__infos__availability__text {
-  @extend %text;
-
-  max-width: 21.4rem;
-}
-
-.home__infos__availability__date {
-  @extend %text;
-
-  color: $color-perfume;
-}
-
-.home__infos__awards {
-  display: flex;
-  gap: 4.5rem;
-
-  @include media('<phone') {
-    display: none;
-  }
-}
-
-.home__infos__awards__title {
-  @extend %text;
-
-  max-width: 21.4rem;
-}
-
-.home__infos__awards__text {
-  @extend %text;
-
-  color: $color-perfume;
-  white-space: nowrap;
-}
-
-.home__infos__links {
-  display: flex;
-  // flex-direction: column;
-  gap: 2rem;
-
-  @include media('<phone') {
-    flex-direction: row;
-    justify-content: space-between;
-  }
-}
-
-.home__infos__link {
-  @extend %text;
-
-  transform: translateY(-2rem);
-  overflow: hidden;
-
-  @include media('<phone') {
-    transform: translateY(0);
-  }
-}
-
-.home__infos__right {
-  display: flex;
-  flex-direction: column;
-}
-
-.home__infos__right__title {
+.home__infos__title {
   @extend %text;
 }
 
-.home__infos__right__link {
+.home__infos__link,
+.home__infos__text {
   @extend %text;
 
   color: $color-perfume;
   width: fit-content;
+}
+
+.home__footer__links {
+  position: absolute;
+  left: 0;
+  bottom: 4rem;
+  padding: 0 4rem;
+  display: flex;
+  gap: 2rem;
+
+  @include media("<phone") {
+    bottom: 2.5rem;
+    padding: 0 2.5rem;
+  }
+}
+
+.home__footer__link {
+  @extend %text;
+
+  overflow: hidden;
 }
