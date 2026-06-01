@@ -113,6 +113,10 @@
     top: 2.25rem;
     left: 2.25rem;
   }
+
+  a {
+    text-decoration: underline;
+  }
 }
 
 .home__infos {
@@ -215,9 +219,20 @@
   @extend %text;
 }
 
+.home__infos__work__line {
+  display: flex;
+  gap: 0.5rem;
+}
+
 .home__infos__work__link {
   @extend %text;
 
   color: $color-perfume;
   width: fit-content;
+}
+
+.home__infos__work__company {
+  @extend %text;
+
+  color: $color-perfume;
 }
