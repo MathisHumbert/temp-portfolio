@@ -1,0 +1,35 @@
+# Mathis Humbert
+
+> Mathis Humbert is a self-taught creative developer, front-end developer and design engineer. He works as a creative developer at Locomotive (https://locomotive.ca/) and runs his own freelance practice, building award-winning websites for agencies, startups and companies worldwide.
+
+## Expertise
+
+- Creative development and creative front-end development
+- Design engineering: turning design into pixel-perfect, production-ready interfaces
+- Interactive animation and motion (GSAP, custom scroll and page transitions)
+- 3D and WebGL experiences (Three.js, GLSL shaders)
+- Web performance and accessibility
+
+## Selected work
+
+- Sam Bassett: https://www.sambassett.studio/
+- Wolverine Worldwide (with Locomotive): https://wolverineworldwide.com/
+- Preymaker: https://preymaker.com/
+- Ethan & Tom: https://ethanandtom.com/
+- Local Studio: https://localstudio.fr/
+- Evan Fasquelle: https://evanfasquelle.com/
+
+## Awards
+
+- Awwwards Site of the Day x4
+- Awwwards Developer Award x4
+- FWA of the Day x2
+- CSS Design Awards Website of the Day x2
+
+## Contact
+
+- Website: https://mathishumbert.com/
+- Email: mathishumbert71@gmail.com
+- GitHub: https://github.com/MathisHumbert
+- LinkedIn: https://www.linkedin.com/in/mathis-humbert-1612ba1b5/
+- X / Twitter: https://x.com/Mathis1Humbert
